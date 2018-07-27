@@ -16,7 +16,7 @@ describe('default test', () => {
         })
         .build();
 
-    const url = 'http://localhost';
+    const url = 'http://localhost:8000';
 
     it('should check the page title', async () => {
         await driver.get(`${url}`);
