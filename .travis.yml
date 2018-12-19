@@ -22,7 +22,7 @@ install:
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
   - cd ${TRAVIS_BUILD_DIR}
-  - php bin/n98-magerun.phar install --dbHost=127.0.01 --dbUser=travis --dbName=magento --dbName=magento
+  - php bin/n98-magerun.phar install --no-interaction --dbHost=127.0.01 --dbUser=travis --dbName=magento --dbName=magento --magentoVersion=1.9.4.0
 
 script:
   - php bin/n98-magerun.phar sys:check --root-dir=${MAGENTO_DIRECTORY}
