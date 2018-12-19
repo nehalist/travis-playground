@@ -12,6 +12,7 @@ env:
   global:
     - MAGENTO_DIRECTORY=${HOME}/magento
     - MAGENTO_VERSION=1.9.4.0
+    - n98=php ${TRAVIS_BUILD_DIR}/bin/n98-magerun.phar --no-interaction --root-dir=${MAGENTO_DIRECTORY}
 
 before_install:
   - mysql -e 'CREATE DATABASE magento;'
@@ -21,8 +22,7 @@ install:
   - cd ${MAGENTO_DIRECTORY}
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
-  - cd ${TRAVIS_BUILD_DIR}
-  - php bin/n98-magerun.phar install --no-interaction --dbHost=127.0.0.1 --dbUser=travis --dbName=magento --dbName=magento --magentoVersion=${MAGENTO_VERSION} --root-dir=${MAGENTO_DIRECTORY}
+  - $n98 install --dbHost=127.0.0.1 --dbUser=travis --dbName=magento --magentoVersion=${MAGENTO_VERSION}
 
 script:
   - php bin/n98-magerun.phar sys:check --root-dir=${MAGENTO_DIRECTORY}
