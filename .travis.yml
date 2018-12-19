@@ -5,6 +5,9 @@ language: php
 php:
   - 7.1
 
+services:
+  - mysql
+
 env:
   global:
     - MAGENTO_DIRECTORY=${HOME}/magento
