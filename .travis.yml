@@ -18,5 +18,8 @@ install:
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
 
+before_script:
+  - cd .
+
 script:
   - php bin/n98-magerun.phar sys:check --root-dir=${MAGENTO_DIRECTORY}
