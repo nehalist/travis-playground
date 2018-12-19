@@ -12,15 +12,17 @@ env:
   global:
     - MAGENTO_DIRECTORY=${HOME}/magento
     - MAGENTO_VERSION=1.9.4.0
+    - n98=php ${TRAVIS_BUILD_DIR}/bin/n98-magerun.phar
+
+before_install:
+  - mysql -e 'CREATE DATABASE magento;'
 
 install:
   - git clone https://github.com/OpenMage/magento-mirror.git ${MAGENTO_DIRECTORY}
   - cd ${MAGENTO_DIRECTORY}
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
-
-before_script:
-  - cd ${TRAVIS_BUILD_DIR}
+  - n98 install --dbHost=127.0.01 --dbUser=travis --dbName=magento --dbName=magento
 
 script:
-  - php bin/n98-magerun.phar sys:check --root-dir=${MAGENTO_DIRECTORY}
+  - n98 sys:check --root-dir=${MAGENTO_DIRECTORY}
