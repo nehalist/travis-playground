@@ -3,9 +3,7 @@ dist: trusty
 language: php
 
 php:
-  - 7.2
   - 7.1
-  - 5.6
 
 env:
   global:
@@ -19,7 +17,7 @@ install:
   - git checkout tags/${MAGENTO_VERSION}
 
 before_script:
-  - cd .
+  - cd ${TRAVIS_BUILD_DIR}
 
 script:
   - php bin/n98-magerun.phar sys:check --root-dir=${MAGENTO_DIRECTORY}
