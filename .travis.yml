@@ -8,4 +8,4 @@ php:
   - 5.6
 
 script:
-  - bin/n98-magerun.phar sys:check
+  - php bin/n98-magerun.phar sys:check
