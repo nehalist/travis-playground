@@ -27,4 +27,5 @@ install:
   - cd ${MAGENTO_DIRECTORY}
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
+  - cd ${TRAVIS_BUILD_DIR}
   - composer n98 install --dbUser=travis --dbHost=127.0.0.1 --dbName=magento --baseUrl="http://127.0.0.1" --installationFolder=${MAGENTO_DIRECTORY} --noDownload --forceUseDb
