@@ -23,7 +23,6 @@ before_install:
 
 install:
   - composer install $COMPOSER_ARGS
-  - composer n98 sys:check --root-dir=${MAGENTO_DIRECTORY}
   - git clone https://github.com/OpenMage/magento-mirror.git ${MAGENTO_DIRECTORY}
   - cd ${MAGENTO_DIRECTORY}
   - git tag -l
