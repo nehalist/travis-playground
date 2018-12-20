@@ -1,0 +1,9 @@
+commands:
+  N98\Magento\Command\Installer\InstallCommand:
+    magento-packages:
+      - name: openmage-mirror
+        version: 1.9.4.0
+        source:
+          url: git@github.com:OpenMage/magento-mirror.git
+          type: git
+          reference: 1.9.4.0
