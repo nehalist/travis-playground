@@ -18,9 +18,13 @@ env:
     - MAGENTO_DIRECTORY=${HOME}/magento
     - MAGENTO_VERSION=1.9.4.0
     - n98="php ${TRAVIS_BUILD_DIR}/n98-magerun.phar -n --root-dir=${MAGENTO_DIRECTORY}"
+    - modman="sh ${TRAVIS_BUILD_DIR}/modman"
 
 before_install:
   - wget https://files.magerun.net/n98-magerun.phar
+  - $n98 --version
+  - wget https://raw.github.com/colinmollenhour/modman/master/modman
+  - $modman --version
   - mysql -e 'CREATE DATABASE magento;'
 
 install:
@@ -30,3 +34,4 @@ install:
   - git checkout tags/${MAGENTO_VERSION}
   - $n98 sys:check
   - $n98 install --dbUser=travis --dbHost=127.0.0.1 --dbName=magento --baseUrl="http://127.0.0.1" --installationFolder=${MAGENTO_DIRECTORY} --noDownload --forceUseDb
+
