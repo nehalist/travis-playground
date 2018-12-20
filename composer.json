@@ -1,0 +1,7 @@
+{
+  "name": "nehalist/travis-playground",
+  "license": "MIT",
+  "require-dev": {
+    "n98/magerun": "^1.102"
+  }
+}
