@@ -17,7 +17,7 @@ env:
     - COMPOSER_ARGS="--no-interaction"
     - MAGENTO_DIRECTORY=${HOME}/magento
     - MAGENTO_VERSION=1.9.4.0
-    - n98="php $COMPOSER_BIN_DIR/n98-magerun --no-interaction --root-dir=${MAGENTO_DIRECTORY}"
+    - n98="php ${TRAVIS_BUILD_DIR}/vendor/bin/n98-magerun --no-interaction --root-dir=${MAGENTO_DIRECTORY}"
 
 before_install:
   - mysql -e 'CREATE DATABASE magento;'
