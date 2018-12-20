@@ -3,5 +3,8 @@
   "license": "MIT",
   "require-dev": {
     "n98/magerun": "^1.102"
+  },
+  "scripts": {
+    "n98": "vendor/bin/n98-magerun -n"
   }
 }
