@@ -17,15 +17,16 @@ env:
     - COMPOSER_ARGS="--no-interaction"
     - MAGENTO_DIRECTORY=${HOME}/magento
     - MAGENTO_VERSION=1.9.4.0
+    - n98="php ${TRAVIS_BUILD_DIR}/n98-magerun.phar -n --root-dir=${MAGENTO_DIRECTORY}"
 
 before_install:
+  - wget https://files.magerun.net/n98-magerun.phar
   - mysql -e 'CREATE DATABASE magento;'
 
 install:
-  - composer install $COMPOSER_ARGS
   - git clone https://github.com/OpenMage/magento-mirror.git ${MAGENTO_DIRECTORY}
   - cd ${MAGENTO_DIRECTORY}
   - git tag -l
   - git checkout tags/${MAGENTO_VERSION}
-  - cd ${TRAVIS_BUILD_DIR}
-  - composer n98 install --dbUser=travis --dbHost=127.0.0.1 --dbName=magento --baseUrl="http://127.0.0.1" --installationFolder=${MAGENTO_DIRECTORY} --noDownload --forceUseDb
+  - $n98 sys:check
+  - $n98 install --dbUser=travis --dbHost=127.0.0.1 --dbName=magento --baseUrl="http://127.0.0.1" --installationFolder=${MAGENTO_DIRECTORY} --noDownload --forceUseDb
